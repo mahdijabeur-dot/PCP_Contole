@@ -1,0 +1,30 @@
+:root { --bg:#0b1e2d; --card:#ffffff; --primary:#1363df; --primary-700:#0e4fb3; --text:#1a1a1a; --muted:#6b7280; --border:#e5e7eb; }
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif;color:var(--text);background:#f6f8fb}
+.app-header{background:var(--bg);color:#fff;padding:2rem 1rem}
+.app-header h1{margin:0;font-size:1.75rem}
+.app-header .subtitle{margin:.25rem 0 0;color:#cbd5e1}
+main{max-width:1000px;margin:-2rem auto 2rem;padding:0 1rem}
+form{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+section{margin-bottom:1.5rem}
+section h2{font-size:1.1rem;margin:0 0 .75rem;color:var(--primary-700)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+.field{grid-column:span 6;display:flex;flex-direction:column}
+.field.full{grid-column:1 / -1}
+label{font-weight:600;margin-bottom:.35rem}
+.req{color:#b91c1c}
+input[type=text],input[type=date],input[type=number],textarea,select{border:1px solid var(--border);border-radius:8px;padding:.6rem .7rem;font-size:.95rem}
+input[readonly]{background:#f9fafb;color:var(--muted)}
+.hint{color:var(--muted);font-size:.8rem}
+fieldset{border:1px dashed var(--border);border-radius:8px;padding:.75rem}
+legend{font-weight:600}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem 1rem;margin-top:.5rem}
+.form-actions{display:flex;gap:.75rem;padding-top:.5rem;border-top:1px solid var(--border)}
+.btn{appearance:none;border:1px solid var(--border);background:#fff;color:var(--text);padding:.6rem 1rem;border-radius:8px;cursor:pointer}
+.btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn.primary:hover{background:var(--primary-700)}
+.app-footer{text-align:center;color:var(--muted);padding:1rem}
+@media (max-width:768px){.field{grid-column:1 / -1}.choices{grid-template-columns:1fr}}
+.print-report{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:1rem;margin-top:1rem}
+.print-table{width:100%;border-collapse:collapse}
+.print-table th,.print-table td{border:1px solid #e5e7eb;padding:.5rem;text-align:left}

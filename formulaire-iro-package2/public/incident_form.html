@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Déclaration d’incident – Risque opérationnel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    @media print { body { background:#fff } .app-header, .form-actions { display:none } .print-report{ display:block } }
+    .print-report{ display:none }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <h1>Déclaration d’incident – Risque opérationnel</h1>
+    <p class="subtitle">Portail interne • Traçabilité & conformité</p>
+  </header>
+  <main>
+    <form id="incidentForm" novalidate>
+      <section aria-labelledby="section-info">
+        <h2 id="section-info">1. Informations générales</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="ref">Référence</label>
+            <input id="ref" name="ref" type="text" placeholder="Auto" readonly />
+            <small class="hint">Générée automatiquement à l’enregistrement</small>
+          </div>
+          <div class="field">
+            <label for="entite">Entité / Agence / Direction <span class="req">*</span></label>
+            <input id="entite" name="entite" type="text" required />
+          </div>
+          <div class="field">
+            <label for="declarant">Déclarant (Nom & fonction) <span class="req">*</span></label>
+            <input id="declarant" name="declarant" type="text" required />
+          </div>
+          <div class="field">
+            <label for="dateSurv">Date de survenance <span class="req">*</span></label>
+            <input id="dateSurv" name="dateSurv" type="date" required />
+          </div>
+          <div class="field">
+            <label for="dateConst">Date de constatation <span class="req">*</span></label>
+            <input id="dateConst" name="dateConst" type="date" required />
+          </div>
+          <div class="field">
+            <label for="dateDecl">Date de déclaration</label>
+            <input id="dateDecl" name="dateDecl" type="date" readonly />
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-desc">
+        <h2 id="section-desc">2. Description de l’incident</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="nature">Nature de l’incident <span class="req">*</span></label>
+            <input id="nature" name="nature" type="text" placeholder="Ex. erreur de saisie, fraude, panne système…" required />
+          </div>
+          <div class="field full">
+            <label for="description">Description détaillée <span class="req">*</span></label>
+            <textarea id="description" name="description" rows="5" required></textarea>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-class">
+        <h2 id="section-class">3. Classification</h2>
+        <div class="grid">
+          <fieldset class="field full">
+            <legend>Type d’événement (Catégories Bâloises) <span class="req">*</span></legend>
+            <div class="choices">
+              <label><input type="radio" name="typeEvt" value="Fraude interne" required /> Fraude interne</label>
+              <label><input type="radio" name="typeEvt" value="Fraude externe" /> Fraude externe</label>
+              <label><input type="radio" name="typeEvt" value="Pratiques emploi / sécurité" /> Pratiques emploi / sécurité</label>
+              <label><input type="radio" name="typeEvt" value="Clients / produits / pratiques commerciales" /> Clients / produits / pratiques commerciales</label>
+              <label><input type="radio" name="typeEvt" value="Dommages aux actifs corporels" /> Dommages aux actifs corporels</label>
+              <label><input type="radio" name="typeEvt" value="Interruption d’activité / systèmes" /> Interruption d’activité / systèmes</label>
+              <label><input type="radio" name="typeEvt" value="Exécution / livraison / gestion des processus" /> Exécution / livraison / gestion des processus</label>
+            </div>
+          </fieldset>
+          <fieldset class="field full">
+            <legend>Type d’impact <span class="req">*</span></legend>
+            <div class="choices">
+              <label><input type="checkbox" name="impactFin" id="impactFin" /> Financier</label>
+              <label><input type="checkbox" name="impactQual" id="impactQual" /> Non financier</label>
+            </div>
+          </fieldset>
+        </div>
+      </section>
+      <section aria-labelledby="section-impact">
+        <h2 id="section-impact">4. Impact estimé</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="perte">Montant de la perte (TND)</label>
+            <input id="perte" name="perte" type="number" min="0" step="0.01" inputmode="decimal" />
+          </div>
+          <div class="field">
+            <label for="recup">Montant récupérable (TND)</label>
+            <input id="recup" name="recup" type="number" min="0" step="0.01" inputmode="decimal" />
+          </div>
+          <div class="field full">
+            <label for="impactQualTxt">Impact qualitatif</label>
+            <textarea id="impactQualTxt" name="impactQualTxt" rows="3" placeholder="Réputation, conformité, satisfaction client…"></textarea>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-causes">
+        <h2 id="section-causes">5. Causes identifiées</h2>
+        <div class="grid">
+          <div class="field full">
+            <label for="causes">Analyse des causes</label>
+            <textarea id="causes" name="causes" rows="4" placeholder="Erreur humaine, défaillance processus, défaillance technique, événement externe…"></textarea>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-actions">
+        <h2 id="section-actions">6. Mesures correctives / conservatoires</h2>
+        <div class="grid">
+          <div class="field full">
+            <label for="actions">Actions prises ou à prévoir</label>
+            <textarea id="actions" name="actions" rows="4"></textarea>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-files">
+        <h2 id="section-files">7. Pièces justificatives</h2>
+        <div class="grid">
+          <div class="field full">
+            <label for="files">Joindre des documents (PDF, images, e-mails) – max 10 Mo</label>
+            <input id="files" name="files" type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.eml,.msg" />
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-val">
+        <h2 id="section-val">8. Validation</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="cro">CRO (Réseau / Siège)</label>
+            <input id="cro" name="cro" type="text" placeholder="Nom (sign. électronique côté SI)" />
+          </div>
+          <div class="field">
+            <label for="dro">DRO&M</label>
+            <input id="dro" name="dro" type="text" placeholder="Validation finale" />
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="section-obs">
+        <h2 id="section-obs">9. Observations complémentaires</h2>
+        <div class="grid">
+          <div class="field full">
+            <label for="obs">Commentaires / recommandations</label>
+            <textarea id="obs" name="obs" rows="3"></textarea>
+          </div>
+        </div>
+      </section>
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Enregistrer</button>
+        <button type="reset" class="btn">Réinitialiser</button>
+        <button type="button" id="btnPdf" class="btn">Générer le PDF</button>
+      </div>
+    </form>
+    <article id="printReport" class="print-report">
+      <h2>Déclaration d’incident – Fiche PDF</h2>
+      <div id="printContent"></div>
+      <small>Généré le <span id="printDate"></span></small>
+    </article>
+  </main>
+  <footer class="app-footer">
+    <small>Confidentiel – Données sensibles • Tous les champs marqués <span class="req">*</span> sont obligatoires.</small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
